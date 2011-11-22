@@ -23,20 +23,24 @@ public class MSSQLDatabase implements Database {
     private String user;
     private String password;
     private Connection dbcon = null;
+    private String name = "MSSQL";
 
     public MSSQLDatabase(String host, String instance, String database, String user, String password) {
         this.host = host;
         this.instance = instance;
         this.user = user;
+        this.database = database;
         this.password = password;
     }
     
     @Override
     public void connect() {
         try {
-        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        //zurückgeben der neuen Verbindung
-        this.dbcon = DriverManager.getConnection("jdbc:sqlserver://"+host+"\\"+instance+";databaseName="+database+"\"", user, password);
+            // load driver
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            // establish connection
+            this.dbcon = DriverManager.getConnection("jdbc:sqlserver://" + host + "\\" + instance + ";databaseName=" + database, user, password);
+            System.out.println(this.name + ": connection to mssqlserver " + host + "\\" + instance + "\\" + database + " established");
         } catch (Exception ex) {
             ex.printStackTrace(System.out);
         }
