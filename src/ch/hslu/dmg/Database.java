@@ -8,8 +8,11 @@ package ch.hslu.dmg;
 public interface Database {
     
     void connect();
+    
     void close();
+    
     void order(java.util.Date date, int partId);
-    void getPartId(String partName);
+    
+    int getPartId(String partName);
     
 }

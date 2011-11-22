@@ -12,7 +12,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Implementation of the Database interface version 1.
+ * Allows the application to connect to mssql server engines
  * @author Silvano Brugnoni <silvano.brugnoni@stud.hslu.ch>
  */
 public class MSSQLDatabase implements Database {
@@ -51,6 +52,7 @@ public class MSSQLDatabase implements Database {
         try {
             this.dbcon.close();
             this.dbcon = null;
+            System.out.println(this.name + ": connection to mssqlserver " + host + " closed");
         } catch (SQLException ex) {
             Logger.getLogger(MSSQLDatabase.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -63,7 +65,7 @@ public class MSSQLDatabase implements Database {
     }
 
     @Override
-    public void getPartId(String partName) {
+    public int getPartId(String partName) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
     
