@@ -1,5 +1,7 @@
 package ch.hslu.dmg;
 
+import ch.hslu.dmg.ui.Gui;
+
 /**
  * Controller module.
  * @version 1
@@ -10,7 +12,15 @@ public class Controller {
     private Database db = null;
     
     public Controller() {
-        db = new MSSQLDatabase("localhost", "sqlexpress", "dmg", "dmg_user", "12345");
+        db = new MSSQLDatabase();
+    }
+    
+    public boolean connect(String host, String instance, String database, String user, String password) {
+        return db.connect(host, instance, database, user, password);
+    }
+    
+    public boolean close() {
+        return db.close();
     }
     
     /**
@@ -20,16 +30,17 @@ public class Controller {
      * @param partName Name of the part to order
      * @param units How many units
      */
-    public void order(java.util.Date deliveryDate, String partName, int units) {
-        db.connect();
+    public void order(String year, String month, String day, String partName, int units) {
+        // db.connect();
         for (int i = 0; i < units; i++) {
             int partId = db.getPartId(partName);
-            db.order(deliveryDate, partId);
+            db.order(year, month, day, partId);
         }  
-        db.close();
+        // db.close();
     }
     
     public static void main(String[] args) {
         Controller control = new Controller();
+        new Gui(control);
     }
 }

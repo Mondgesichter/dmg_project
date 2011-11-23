@@ -7,11 +7,11 @@ package ch.hslu.dmg;
  */
 public interface Database {
     
-    void connect();
+    boolean connect(String host, String instance, String database, String user, String password);
     
-    void close();
+    boolean close();
     
-    void order(java.util.Date date, int partId);
+    void order(String year, String month, String day, int partId);
     
     int getPartId(String partName);
     
