@@ -10,7 +10,7 @@ public class Controller {
     private Database db = null;
     
     public Controller() {
-        db = new MSSQLDatabase("localhost", "sqlexpress", "ddb", "ddb_user", "12345");
+        db = new MSSQLDatabase("localhost", "sqlexpress", "dmg", "dmg_user", "12345");
     }
     
     /**
