@@ -7,8 +7,6 @@ package ch.hslu.dmg.ui;
 import ch.hslu.dmg.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Calendar;
-import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
